@@ -32,6 +32,16 @@ class App extends Component {
     }
   }
 
+  async saveCooperData() {
+    const result = this.calculate();
+    try {
+      await this.saveCooperData(result);
+      this.props.entryHandler();
+    } catch(error) {
+      console.log(error);
+    }
+  }
+
  render() {
   let renderLogin;
   let user;
