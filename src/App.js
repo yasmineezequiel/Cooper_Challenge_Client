@@ -33,20 +33,33 @@ class App extends Component {
   }
 
  render() {
-  let renderLogin
-
-  if (this.state.renderLoginForm === true) {
+  let renderLogin;
+  let user;
+  
+  if (this.state.authenticated === true) {
+    user = JSON.parse(sessionStorage.getItem('credentials')).uid;
     renderLogin = (
-      <LoginForm 
+      <p>Hi {user}</p>
+    )
+  } else {
+    if (this.state.renderLoginForm === true) {
+      renderLogin = (
+      <>
+        <LoginForm 
         loginHandler={this.onLogin.bind(this)}
         inputChangeHandler={this.onChange.bind(this)}
       />
+      </>
     )
   } else {
     renderLogin = (
+      <>
       <button id="login" onClick={() => this.setState({ renderLoginForm: true })}>Login</button>
+      <p>{this.state.message}</p>
+      </>
     )
   }
+}
     return (
       <>
         <InputFields
