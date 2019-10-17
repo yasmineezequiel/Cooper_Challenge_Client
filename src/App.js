@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DisplayCooperResult from './Components/DisplayCooperResult'
+import InputFields from './Components/InputFields';
 
 class App extends Component {
     state = {
@@ -9,7 +10,6 @@ class App extends Component {
     }
 
   onChange(event) {
-    debugger
     this.setState({
       [event.target.id]: event.target.value
     })
@@ -18,12 +18,14 @@ class App extends Component {
  render() {
     return (
       <>
-
-          <DisplayCooperResult 
-            distance={this.state.distance}
-            gender={this.state.gender}
-            age={this.state.age}
-            />
+        <InputFields
+        inputChangeHandler={this.onChange.bind(this)} 
+        />
+        <DisplayCooperResult 
+          distance={this.state.distance}
+          gender={this.state.gender}
+          age={this.state.age}
+        />
       </>
     );
   }
