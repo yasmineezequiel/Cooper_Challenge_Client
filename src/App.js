@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import DisplayCooperResult from './Components/DisplayCooperResult';
 import InputFields from './Components/InputFields';
 import LoginForm from './Components/LoginForm';
-import { authenticate } from './Module/AUth';
+import { authenticate } from './Modules/Auth';
 
 class App extends Component {
     state = {
@@ -52,8 +52,6 @@ class App extends Component {
         <InputFields
         inputChangeHandler={this.onChange.bind(this)} 
         />
-
-        <button id="login">Login</button>
         
         <DisplayCooperResult 
           distance={this.state.distance}
