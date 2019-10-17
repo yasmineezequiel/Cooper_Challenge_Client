@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import DisplayCooperResult from './Components/DisplayCooperResult'
 
 class App extends Component {
+  constructor(props) 
  render() {
     return (
-      <div>
+      <>
         <div>
           <label>Distance</label>
           <input id="distance"></input>
@@ -18,7 +20,10 @@ class App extends Component {
           <label>Age</label>
           <input id="age"></input>
         </div>
-      </div>
+        <div>
+          <DisplayCooperResult />
+        </div>
+      </>
     );
   }
 }
