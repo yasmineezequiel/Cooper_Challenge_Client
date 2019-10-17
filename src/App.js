@@ -13,7 +13,8 @@ class App extends Component {
       authenticated: false,
       email: '',
       password: '',
-      message: ''
+      message: '',
+      entrySaved: false
     }
 
   onChange(event) {
@@ -40,6 +41,10 @@ class App extends Component {
     } catch(error) {
       console.log(error);
     }
+  }
+
+  entryHandler() {
+    this.setState({ entrySaved: true });
   }
 
  render() {
@@ -80,6 +85,9 @@ class App extends Component {
           distance={this.state.distance}
           gender={this.state.gender}
           age={this.state.age}
+          authenticated={this.state.authenticated}
+          entrySaved={this.state.entrySaved}
+          entryHandler={this.entryHandler.bind(this)}
         />
         {renderLogin}
       </>
