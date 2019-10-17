@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import DisplayCooperResult from './Components/DisplayCooperResult'
+import DisplayCooperResult from './Components/DisplayCooperResult';
 import InputFields from './Components/InputFields';
-import LoginForm from './Components/LoginForm'
+import LoginForm from './Components/LoginForm';
+import { authenticate } from './Module/AUth';
 
 class App extends Component {
     state = {
