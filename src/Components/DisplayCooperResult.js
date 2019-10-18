@@ -28,6 +28,7 @@ class DisplayCooperResult extends Component {
           <button id="save-result" onClick={this.saveCooperData.bind(this)}>Save entry</button>
         </>
       )
+<<<<<<< HEAD
     } else if (this.props.authenticated === true && this.props.entrySaved === true) {
       saveButton = (
         <>
@@ -43,6 +44,25 @@ class DisplayCooperResult extends Component {
         {saveButton}
       </>
     }
+=======
+    } else if (this.props.authenticated === true && this.props.entrySaved === true)
+    {
+      saveButton = (
+        <>
+        <p>Your entry was saved</p>
+      </>
+    )
+  }
+    if (this.props.age !== '' && this.props.distance !== '') {
+        results = (
+          <>
+            <p>{this.props.age} y/o {this.props.gender} running {this.props.distance} meters.</p> 
+            <p>Result: {this.calculate()}</p>
+            {saveButton}
+          </>
+        )
+      }
+>>>>>>> ef42ec79e0c2163ef37350a71c6b69a8e5b4892e
     return (
       <div>
         {results}

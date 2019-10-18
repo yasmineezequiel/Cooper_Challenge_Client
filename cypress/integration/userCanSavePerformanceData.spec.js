@@ -6,7 +6,7 @@ describe('User attempts save data', () => {
     cy.route({
       method: 'POST',
       url: 'http://localhost:3000/api/v1/performance_data',
-      response: 'fixture:saving_entry_response.json',
+      response: 'fixture:saving_entry_response.json'
     })
     cy.route({
       method: 'POST',
