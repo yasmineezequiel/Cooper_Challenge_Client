@@ -19,7 +19,8 @@ class App extends Component {
 
   onChange(event) {
     this.setState({
-      [event.target.id]: event.target.value
+      [event.target.id]: event.target.value,
+      entrySaved: false
     })
   }
 
@@ -63,7 +64,7 @@ class App extends Component {
         <LoginForm 
         loginHandler={this.onLogin.bind(this)}
         inputChangeHandler={this.onChange.bind(this)}
-      />
+        />
       </>
     )
   } else {

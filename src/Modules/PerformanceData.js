@@ -9,7 +9,7 @@ const saveData = async (result) => {
   headers = {
     ...headers,
     "Content-type": "application/json",
-    Accept: "application(json"
+    Accept: "application/json"
   };
   const path = apiUrl + '/performance_data';
   return new Promise((resolve, reject) => {
@@ -21,7 +21,7 @@ const saveData = async (result) => {
     .then(response => {
       storeAuthCredentials(response);
       resolve(response.data.message);
-    });
+    });  
   });
 };
 
