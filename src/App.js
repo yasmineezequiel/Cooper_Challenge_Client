@@ -13,12 +13,14 @@ class App extends Component {
       authenticated: false,
       email: '',
       password: '',
-      message: ''
+      message: '',
+      entrySaved: false
     }
 
   onChange(event) {
     this.setState({
-      [event.target.id]: event.target.value
+      [event.target.id]: event.target.value,
+      entrySaved: false
     })
   }
 
@@ -30,6 +32,10 @@ class App extends Component {
     } else {
       this.setState({ message: resp.message, renderLoginForm: false })
     }
+  }
+
+  entryHandler() {
+    this.setState({ entrySaved: true });
   }
 
  render() {
@@ -48,7 +54,7 @@ class App extends Component {
         <LoginForm 
         loginHandler={this.onLogin.bind(this)}
         inputChangeHandler={this.onChange.bind(this)}
-      />
+        />
       </>
     )
   } else {
@@ -70,6 +76,9 @@ class App extends Component {
           distance={this.state.distance}
           gender={this.state.gender}
           age={this.state.age}
+          authenticated={this.state.authenticated}
+          entrySaved={this.state.entrySaved}
+          entryHandler={this.entryHandler.bind(this)}
         />
         {renderLogin}
       </>
