@@ -84,6 +84,7 @@ class App extends Component {
           entrySaved={this.state.entrySaved}
           entryHandler={this.entryHandler.bind(this)}
         />
+        {performanceDataIndex}
         {renderLogin}
       </>
     );
