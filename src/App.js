@@ -4,6 +4,11 @@ import InputFields from './Components/InputFields';
 import LoginForm from './Components/LoginForm';
 import { authenticate } from './Modules/Auth';
 import DisplayPerformanceData from './Components/DisplayPerformanceData';
+import {
+  Container,
+  Grid,
+  Header
+} from 'semantic-ui-react'
 
 class App extends Component {
     state = {
@@ -90,22 +95,31 @@ class App extends Component {
     }
   }
     return (
-      <>
-        <InputFields
-        inputChangeHandler={this.onChange.bind(this)} 
-        />
-        
-        <DisplayCooperResult 
-          distance={this.state.distance}
-          gender={this.state.gender}
-          age={this.state.age}
-          authenticated={this.state.authenticated}
-          entrySaved={this.state.entrySaved}
-          entryHandler={this.entryHandler.bind(this)}
-        />
-        {performanceDataIndex}
-        {renderLogin}
-      </>
+      <Container>
+        <Grid centered columns={3}>
+        <Grid.Column>
+          <Header
+            as="h1"
+            textalign="center"
+            >
+              Cooper
+            </Header>
+              <InputFields
+                inputChangeHandler={this.onChange.bind(this)} 
+                />
+                <DisplayCooperResult 
+                  distance={this.state.distance}
+                  gender={this.state.gender}
+                  age={this.state.age}
+                  authenticated={this.state.authenticated}
+                  entrySaved={this.state.entrySaved}
+                  entryHandler={this.entryHandler.bind(this)}
+                />
+                {performanceDataIndex}
+                {renderLogin}
+            </Grid.Column>.Column>
+        </Grid>
+      </Container>
     );
   }
 }
