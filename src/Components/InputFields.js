@@ -1,16 +1,19 @@
 import React from 'react'
+import {
+  Input
+} from 'semantic-ui-react'
 
 const InputFields = (props) => {
   return (
     <>
         <div>
           <label>Distance</label>
-          <input id="distance" onChange={props.inputChangeHandler}></input>
+          <Input type="text" placeholder="" id="distance" onChange={props.inputChangeHandler}></Input>
         </div>
 
         <div>
           <label>Your age</label>
-          <input id="age" onChange={props.inputChangeHandler}></input>
+          <Input type="text" placeholder="" id="age" onChange={props.inputChangeHandler}></Input>
         </div>
 
         <select id="gender" onChange={props.inputChangeHandler}>

@@ -7,7 +7,8 @@ import DisplayPerformanceData from './Components/DisplayPerformanceData';
 import {
   Container,
   Grid,
-  Header
+  Header,
+  Button
 } from 'semantic-ui-react'
 
 class App extends Component {
@@ -88,7 +89,7 @@ class App extends Component {
     } else {
       renderLogin = (
         <>
-          <button id="login" onClick={ () => this.setState({ renderLoginForm: true }) }>Login</button>
+          <Button id="login" onClick={ () => this.setState({ renderLoginForm: true }) }>Login</Button>
           <p>{this.state.message}</p>
         </>
       )
