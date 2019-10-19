@@ -31,14 +31,15 @@ describe('User attempts to view his/her performance data in a Chart', () => {
     cy.contains('Above Average')
   })
 
-  it('displays result in chart x', async () => {
+it('displays result in chart x', async () => {
     cy.contains('Poor')
     cy.contains('Below Average')
     cy.contains('Average')
     cy.contains('Above Average')
-  })
   
-  it('displays user input in chart y')
+  
+it('displays user input in chart y')
   cy.get('input[id="distance"]').type('1000');
+})
 })
   
