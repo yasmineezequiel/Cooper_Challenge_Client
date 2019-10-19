@@ -4,6 +4,7 @@ import { Line } from 'react-chartjs-2';
 
 class DisplayCooperChart extends Component {
   state = {
+    
 
   }
 }

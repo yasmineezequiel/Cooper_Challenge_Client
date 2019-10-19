@@ -4,6 +4,7 @@ import InputFields from './Components/InputFields';
 import LoginForm from './Components/LoginForm';
 import { authenticate } from './Modules/Auth';
 import DisplayPerformanceData from './Components/DisplayPerformanceData';
+import DisplayCooperChart from './Components/DisplayCooperChart';
 
 class App extends Component {
     state = {
