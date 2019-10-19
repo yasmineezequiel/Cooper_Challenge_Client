@@ -52,10 +52,6 @@ class App extends Component {
     this.setState({ updateCooperChart: false })
   }
 
-  cooperChartHandler() {
-    this.setState({ renderCooperChart: true })
-  }
-
  render() {
   let renderLogin;
   let user;
@@ -83,7 +79,19 @@ class App extends Component {
       )
     }
     if (this.state.renderCooperChart === true) {
-
+      renderChart = (
+        <>
+          <DisplayCooperChart
+            updateResultChart={this.state.updateCooperChart}
+            resultChartUpdated={this.resultCooperChartUpdated.bind(this)}
+          />
+          <button id="show-chart" onClick={() => this.setState({ renderCooperChart: false })}>Hide Chart</button>
+        </>
+      )
+    } else {
+      renderChart = (
+        <button id="show-chart" onClick={() => this.setState({ renderCooperChart: true })}>Show Chart</button>
+      )
     }
   } else { 
     if (this.state.renderLoginForm === true) {
