@@ -16,7 +16,10 @@ class App extends Component {
       password: '',
       message: '',
       entrySaved: false,
-      renderIndex: false
+      renderIndex: false,
+      updateIndex: false,
+      renderCooperChart: false,
+      updateCooperChart: false
     }
 
   onChange(event) {
@@ -37,7 +40,7 @@ class App extends Component {
   }
 
   entryHandler() {
-    this.setState({ entrySaved: true, updateIndex: true });
+    this.setState({ entrySaved: true, updateIndex: true, updateCooperChart: true });
   }
 
 
@@ -45,10 +48,19 @@ class App extends Component {
     this.setState({ updateIndex: false });
   }
 
+  resultCooperChartUpdated() {
+    this.setState({ updateCooperChart: false })
+  }
+
+  cooperChartHandler() {
+    this.setState({ renderCooperChart: true })
+  }
+
  render() {
   let renderLogin;
   let user;
   let performanceDataIndex;
+  let renderChart;
   
   if (this.state.authenticated === true) {
     user = JSON.parse(sessionStorage.getItem('credentials')).uid;
@@ -69,6 +81,9 @@ class App extends Component {
       performanceDataIndex = (
         <button id="show-index" onClick={() => this.setState({ renderIndex: true })}>Show past entries</button>
       )
+    }
+    if (this.state.renderCooperChart === true) {
+
     }
   } else { 
     if (this.state.renderLoginForm === true) {
