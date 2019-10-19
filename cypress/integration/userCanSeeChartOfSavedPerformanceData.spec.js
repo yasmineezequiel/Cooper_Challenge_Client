@@ -37,7 +37,6 @@ it('displays result in chart x', async () => {
     cy.contains('Average')
     cy.contains('Above Average')
   
-  
 it('displays user input in chart y')
   cy.get('input[id="distance"]').type('1000');
 })
