@@ -4,6 +4,7 @@ import InputFields from './Components/InputFields';
 import LoginForm from './Components/LoginForm';
 import { authenticate } from './Modules/Auth';
 import DisplayPerformanceData from './Components/DisplayPerformanceData';
+import DisplayCooperChart from './Components/DisplayCooperChart';
 
 class App extends Component {
     state = {
@@ -82,8 +83,8 @@ class App extends Component {
       renderChart = (
         <>
           <DisplayCooperChart
-            updateResultChart={this.state.updateCooperChart}
-            resultChartUpdated={this.resultCooperChartUpdated.bind(this)}
+            updateCooperChart={this.state.updateCooperChart}
+            resultCooperChartUpdated={this.resultCooperChartUpdated.bind(this)}
           />
           <button id="show-chart" onClick={() => this.setState({ renderCooperChart: false })}>Hide Chart</button>
         </>
@@ -127,7 +128,14 @@ class App extends Component {
           entryHandler={this.entryHandler.bind(this)}
         />
         {performanceDataIndex}
-        {renderLogin}
+        <div>
+          {renderChart}
+        </div>
+        
+        <div>
+          {renderLogin}
+        </div>
+        
       </>
     );
   }
