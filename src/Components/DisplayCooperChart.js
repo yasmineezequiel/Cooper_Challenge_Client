@@ -3,21 +3,51 @@ import { getData } from '../Modules/PerformanceData';
 import { Line } from 'react-chartjs-2';
 
 class DisplayCooperChart extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      chartData: null
-    }
-  }
-  componentDidMount() {
-    this.getChartData()
+  state = {
+    performanceData: null
   }
 
-  async getChartData() {
+  componentDidMount() {
+    this.getPerformanceData()
+  }
+
+  async getPerformanceData() {
     let result = await getData();
-    this.setState({chartData: result.data.entries}, () => {
-      this.props.indexUpdated();
+    this.setState({performanceData: result.data.entries}, () => {
+      this.props.resultCooperChartUpdated();
     })
+  }
+
+  render() {
+    let dataChart;
+
+    if (this.props.updateCooperChart === true) {
+      this.getPerformanceData();
+    }
+    if (this.state.performanceData != null) {
+      const distances = []
+      const labels = []
+      this.state.performanceData.forEach(item => {
+        distances.push(item.data.distance)
+        labels.push(item.data.message)
+      })
+      const data = {
+        datasets: [
+          {
+            data: distances,
+            label: 'Performances'
+          }
+        ], labels: labels
+      }
+      dataChart = (
+        <Line data={data} />
+      )
+    }
+    return (
+      <div>
+        {dataChart}
+      </div>
+    );
   }
 
   render () {
@@ -44,4 +74,6 @@ class DisplayCooperChart extends Component {
   }      
 }
 
-export default DisplayCooperChart
+  
+
+export default DisplayCooperChart;
