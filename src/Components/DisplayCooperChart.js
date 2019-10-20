@@ -49,6 +49,29 @@ class DisplayCooperChart extends Component {
       </div>
     );
   }
+
+  render () {
+    let dataIndex;
+
+    if (this.props.updateIndex === true) {
+      this.getChartData();
+    }
+    if (this.state.chartData != null) {
+      dataIndex = (
+        <div>
+          {this.state.chartData.map(item => {
+            return <div key={item.id}>{item.data.message}</div>
+          })}
+        </div>
+      )
+    }
+
+    return (
+      <div>
+        {dataIndex}
+      </div>
+    )
+  }      
 }
 
   

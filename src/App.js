@@ -78,12 +78,12 @@ class App extends Component {
             updateIndex={this.state.updateIndex}
             indexUpdated={this.indexUpdated.bind(this)}
           />
-          <button onClick={() => this.setState({ renderIndex: false })}>Hide past entries</button>
+          <Button onClick={() => this.setState({ renderIndex: false })}>Hide past entries</Button>
           </>
           )
     } else {
       performanceDataIndex = (
-        <button id="show-index" onClick={() => this.setState({ renderIndex: true })}>Show past entries</button>
+        <Button id="show-index" onClick={() => this.setState({ renderIndex: true })}>Show past entries</Button>
       )
     }
     if (this.state.renderCooperChart === true) {
@@ -93,12 +93,12 @@ class App extends Component {
             updateCooperChart={this.state.updateCooperChart}
             resultCooperChartUpdated={this.resultCooperChartUpdated.bind(this)}
           />
-          <button id="show-chart" onClick={() => this.setState({ renderCooperChart: false })}>Hide Chart</button>
+          <Button id="show-chart" onClick={() => this.setState({ renderCooperChart: false })}>Hide Chart</Button>
         </>
       )
     } else {
       renderChart = (
-        <button id="show-chart" onClick={() => this.setState({ renderCooperChart: true })}>Show Chart</button>
+        <Button id="show-chart" onClick={() => this.setState({ renderCooperChart: true })}>Show Chart</Button>
       )
     }
   } else { 
@@ -131,6 +131,7 @@ class App extends Component {
               >
                 Cooper
               </Header>
+              <Grid.Row>
                 <InputFields
                   inputChangeHandler={this.onChange.bind(this)} 
                   />
@@ -142,16 +143,26 @@ class App extends Component {
                     entrySaved={this.state.entrySaved}
                     entryHandler={this.entryHandler.bind(this)}
                   />
-                  {performanceDataIndex}
-                  <div>
-                    {renderChart}
-                  </div>
                   
-                  {renderLogin}
+                    <div>
+                      {performanceDataIndex}
+                    </div>
+
+                    {renderLogin}
+                  </Grid.Row>
+                  
+                  <Grid.Row>
+                    <Container>
+                      <div>
+                        {renderChart}
+                      </div>
+                    </Container>
+                  </Grid.Row>
               </Grid.Column>
           </Grid>
         </Container>
       </>
+      
     );
   }
 }
