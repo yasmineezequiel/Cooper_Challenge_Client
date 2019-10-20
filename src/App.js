@@ -148,7 +148,7 @@ class App extends Component {
                   </div>
                   
                   {renderLogin}
-              </Grid.Column>.Column>
+              </Grid.Column>
           </Grid>
         </Container>
       </>
