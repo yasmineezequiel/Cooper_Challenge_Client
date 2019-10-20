@@ -4,6 +4,14 @@ import InputFields from './Components/InputFields';
 import LoginForm from './Components/LoginForm';
 import { authenticate } from './Modules/Auth';
 import DisplayPerformanceData from './Components/DisplayPerformanceData';
+import DisplayCooperChart from './Components/DisplayCooperChart';
+import {
+  Container,
+  Grid,
+  Header,
+  Button
+} from 'semantic-ui-react'
+
 
 class App extends Component {
     state = {
@@ -16,7 +24,10 @@ class App extends Component {
       password: '',
       message: '',
       entrySaved: false,
-      renderIndex: false
+      renderIndex: false,
+      updateIndex: false,
+      renderCooperChart: false,
+      updateCooperChart: false
     }
 
   onChange(event) {
@@ -37,7 +48,7 @@ class App extends Component {
   }
 
   entryHandler() {
-    this.setState({ entrySaved: true, updateIndex: true });
+    this.setState({ entrySaved: true, updateIndex: true, updateCooperChart: true });
   }
 
 
@@ -45,10 +56,15 @@ class App extends Component {
     this.setState({ updateIndex: false });
   }
 
+  resultCooperChartUpdated() {
+    this.setState({ updateCooperChart: false })
+  }
+
  render() {
   let renderLogin;
   let user;
   let performanceDataIndex;
+  let renderChart;
   
   if (this.state.authenticated === true) {
     user = JSON.parse(sessionStorage.getItem('credentials')).uid;
@@ -70,6 +86,21 @@ class App extends Component {
         <button id="show-index" onClick={() => this.setState({ renderIndex: true })}>Show past entries</button>
       )
     }
+    if (this.state.renderCooperChart === true) {
+      renderChart = (
+        <>
+          <DisplayCooperChart
+            updateCooperChart={this.state.updateCooperChart}
+            resultCooperChartUpdated={this.resultCooperChartUpdated.bind(this)}
+          />
+          <button id="show-chart" onClick={() => this.setState({ renderCooperChart: false })}>Hide Chart</button>
+        </>
+      )
+    } else {
+      renderChart = (
+        <button id="show-chart" onClick={() => this.setState({ renderCooperChart: true })}>Show Chart</button>
+      )
+    }
   } else { 
     if (this.state.renderLoginForm === true) {
       renderLogin = (
@@ -83,7 +114,7 @@ class App extends Component {
     } else {
       renderLogin = (
         <>
-          <button id="login" onClick={ () => this.setState({ renderLoginForm: true }) }>Login</button>
+          <Button id="login" onClick={ () => this.setState({ renderLoginForm: true }) }>Login</Button>
           <p>{this.state.message}</p>
         </>
       )
@@ -91,20 +122,35 @@ class App extends Component {
   }
     return (
       <>
-        <InputFields
-        inputChangeHandler={this.onChange.bind(this)} 
-        />
-        
-        <DisplayCooperResult 
-          distance={this.state.distance}
-          gender={this.state.gender}
-          age={this.state.age}
-          authenticated={this.state.authenticated}
-          entrySaved={this.state.entrySaved}
-          entryHandler={this.entryHandler.bind(this)}
-        />
-        {performanceDataIndex}
-        {renderLogin}
+        <Container>
+          <Grid centered columns={3}>
+          <Grid.Column>
+            <Header
+              as="h1"
+              textalign="center"
+              >
+                Cooper
+              </Header>
+                <InputFields
+                  inputChangeHandler={this.onChange.bind(this)} 
+                  />
+                  <DisplayCooperResult 
+                    distance={this.state.distance}
+                    gender={this.state.gender}
+                    age={this.state.age}
+                    authenticated={this.state.authenticated}
+                    entrySaved={this.state.entrySaved}
+                    entryHandler={this.entryHandler.bind(this)}
+                  />
+                  {performanceDataIndex}
+                  <div>
+                    {renderChart}
+                  </div>
+                  
+                  {renderLogin}
+              </Grid.Column>
+          </Grid>
+        </Container>
       </>
     );
   }

@@ -1,4 +1,9 @@
 import React from 'react';
+import {
+  Button,
+  Input
+} from 'semantic-ui-react'
+
 
 const LoginForm = (props) => {
   return (
@@ -6,14 +11,14 @@ const LoginForm = (props) => {
       <div id="login-form">
         <div>
           <label >Email</label>
-          <input id="email" onChange={props.inputChangeHandler}></input>
+          <Input type="text" placeholder=""  id="email" onChange={props.inputChangeHandler}></Input>
         </div>
 
         <div>
           <label>Password</label>
-          <input id="password" onChange={props.inputChangeHandler}></input>
+          <Input type="text" placeholder=""  id="password" onChange={props.inputChangeHandler}></Input>
         </div>
-        <button onClick={(e) => props.loginHandler(e)} id="submit">Submit</button>
+        <Button onClick={(e) => props.loginHandler(e)} id="submit">Submit</Button>
       </div>
     </>
   )
