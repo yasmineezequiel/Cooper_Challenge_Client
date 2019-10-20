@@ -5,6 +5,13 @@ import LoginForm from './Components/LoginForm';
 import { authenticate } from './Modules/Auth';
 import DisplayPerformanceData from './Components/DisplayPerformanceData';
 import DisplayCooperChart from './Components/DisplayCooperChart';
+import {
+  Container,
+  Grid,
+  Header,
+  Button
+} from 'semantic-ui-react'
+
 
 class App extends Component {
     state = {
@@ -71,12 +78,12 @@ class App extends Component {
             updateIndex={this.state.updateIndex}
             indexUpdated={this.indexUpdated.bind(this)}
           />
-          <button onClick={() => this.setState({ renderIndex: false })}>Hide past entries</button>
+          <Button onClick={() => this.setState({ renderIndex: false })}>Hide past entries</Button>
           </>
           )
     } else {
       performanceDataIndex = (
-        <button id="show-index" onClick={() => this.setState({ renderIndex: true })}>Show past entries</button>
+        <Button id="show-index" onClick={() => this.setState({ renderIndex: true })}>Show past entries</Button>
       )
     }
     if (this.state.renderCooperChart === true) {
@@ -86,12 +93,12 @@ class App extends Component {
             updateCooperChart={this.state.updateCooperChart}
             resultCooperChartUpdated={this.resultCooperChartUpdated.bind(this)}
           />
-          <button id="show-chart" onClick={() => this.setState({ renderCooperChart: false })}>Hide Chart</button>
+          <Button id="show-chart" onClick={() => this.setState({ renderCooperChart: false })}>Hide Chart</Button>
         </>
       )
     } else {
       renderChart = (
-        <button id="show-chart" onClick={() => this.setState({ renderCooperChart: true })}>Show Chart</button>
+        <Button id="show-chart" onClick={() => this.setState({ renderCooperChart: true })}>Show Chart</Button>
       )
     }
   } else { 
@@ -107,7 +114,7 @@ class App extends Component {
     } else {
       renderLogin = (
         <>
-          <button id="login" onClick={ () => this.setState({ renderLoginForm: true }) }>Login</button>
+          <Button id="login" onClick={ () => this.setState({ renderLoginForm: true }) }>Login</Button>
           <p>{this.state.message}</p>
         </>
       )
@@ -115,27 +122,45 @@ class App extends Component {
   }
     return (
       <>
-        <InputFields
-        inputChangeHandler={this.onChange.bind(this)} 
-        />
-        
-        <DisplayCooperResult 
-          distance={this.state.distance}
-          gender={this.state.gender}
-          age={this.state.age}
-          authenticated={this.state.authenticated}
-          entrySaved={this.state.entrySaved}
-          entryHandler={this.entryHandler.bind(this)}
-        />
-        {performanceDataIndex}
-        <div>
-          {renderChart}
-        </div>
-        
-        <div>
-          {renderLogin}
-        </div>
-        
+        <Container>
+          <Grid centered columns={3}>
+          <Grid.Column>
+            <Header
+              as="h1"
+              textalign="center"
+              >
+                Cooper
+              </Header>
+              <Grid.Row>
+                <InputFields
+                  inputChangeHandler={this.onChange.bind(this)} 
+                  />
+                  <DisplayCooperResult 
+                    distance={this.state.distance}
+                    gender={this.state.gender}
+                    age={this.state.age}
+                    authenticated={this.state.authenticated}
+                    entrySaved={this.state.entrySaved}
+                    entryHandler={this.entryHandler.bind(this)}
+                  />
+                  
+                    <div>
+                      {performanceDataIndex}
+                    </div>
+
+                    {renderLogin}
+                  </Grid.Row>
+                  
+                  <Grid.Row>
+                    <Container>
+                      <div>
+                        {renderChart}
+                      </div>
+                    </Container>
+                  </Grid.Row>
+              </Grid.Column>
+          </Grid>
+        </Container>
       </>
     );
   }
