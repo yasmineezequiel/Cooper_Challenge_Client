@@ -4,12 +4,16 @@ import InputFields from './Components/InputFields';
 import LoginForm from './Components/LoginForm';
 import { authenticate } from './Modules/Auth';
 import DisplayPerformanceData from './Components/DisplayPerformanceData';
+<<<<<<< HEAD
 import {
   Container,
   Grid,
   Header,
   Button
 } from 'semantic-ui-react'
+=======
+import DisplayCooperChart from './Components/DisplayCooperChart';
+>>>>>>> 1637a4faa0d43f613f27cd5ba3be6d37a4ea839f
 
 class App extends Component {
     state = {
@@ -22,7 +26,10 @@ class App extends Component {
       password: '',
       message: '',
       entrySaved: false,
-      renderIndex: false
+      renderIndex: false,
+      updateIndex: false,
+      renderCooperChart: false,
+      updateCooperChart: false
     }
 
   onChange(event) {
@@ -43,7 +50,7 @@ class App extends Component {
   }
 
   entryHandler() {
-    this.setState({ entrySaved: true, updateIndex: true });
+    this.setState({ entrySaved: true, updateIndex: true, updateCooperChart: true });
   }
 
 
@@ -51,10 +58,15 @@ class App extends Component {
     this.setState({ updateIndex: false });
   }
 
+  resultCooperChartUpdated() {
+    this.setState({ updateCooperChart: false })
+  }
+
  render() {
   let renderLogin;
   let user;
   let performanceDataIndex;
+  let renderChart;
   
   if (this.state.authenticated === true) {
     user = JSON.parse(sessionStorage.getItem('credentials')).uid;
@@ -74,6 +86,21 @@ class App extends Component {
     } else {
       performanceDataIndex = (
         <button id="show-index" onClick={() => this.setState({ renderIndex: true })}>Show past entries</button>
+      )
+    }
+    if (this.state.renderCooperChart === true) {
+      renderChart = (
+        <>
+          <DisplayCooperChart
+            updateCooperChart={this.state.updateCooperChart}
+            resultCooperChartUpdated={this.resultCooperChartUpdated.bind(this)}
+          />
+          <button id="show-chart" onClick={() => this.setState({ renderCooperChart: false })}>Hide Chart</button>
+        </>
+      )
+    } else {
+      renderChart = (
+        <button id="show-chart" onClick={() => this.setState({ renderCooperChart: true })}>Show Chart</button>
       )
     }
   } else { 
@@ -96,6 +123,7 @@ class App extends Component {
     }
   }
     return (
+<<<<<<< HEAD
       <Container>
         <Grid centered columns={3}>
         <Grid.Column>
@@ -121,6 +149,31 @@ class App extends Component {
             </Grid.Column>.Column>
         </Grid>
       </Container>
+=======
+      <>
+        <InputFields
+        inputChangeHandler={this.onChange.bind(this)} 
+        />
+        
+        <DisplayCooperResult 
+          distance={this.state.distance}
+          gender={this.state.gender}
+          age={this.state.age}
+          authenticated={this.state.authenticated}
+          entrySaved={this.state.entrySaved}
+          entryHandler={this.entryHandler.bind(this)}
+        />
+        {performanceDataIndex}
+        <div>
+          {renderChart}
+        </div>
+        
+        <div>
+          {renderLogin}
+        </div>
+        
+      </>
+>>>>>>> 1637a4faa0d43f613f27cd5ba3be6d37a4ea839f
     );
   }
 }
