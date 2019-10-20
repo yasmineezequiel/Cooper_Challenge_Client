@@ -4,16 +4,14 @@ import InputFields from './Components/InputFields';
 import LoginForm from './Components/LoginForm';
 import { authenticate } from './Modules/Auth';
 import DisplayPerformanceData from './Components/DisplayPerformanceData';
-<<<<<<< HEAD
+import DisplayCooperChart from './Components/DisplayCooperChart';
 import {
   Container,
   Grid,
   Header,
   Button
 } from 'semantic-ui-react'
-=======
-import DisplayCooperChart from './Components/DisplayCooperChart';
->>>>>>> 1637a4faa0d43f613f27cd5ba3be6d37a4ea839f
+
 
 class App extends Component {
     state = {
@@ -123,57 +121,37 @@ class App extends Component {
     }
   }
     return (
-<<<<<<< HEAD
-      <Container>
-        <Grid centered columns={3}>
-        <Grid.Column>
-          <Header
-            as="h1"
-            textalign="center"
-            >
-              Cooper
-            </Header>
-              <InputFields
-                inputChangeHandler={this.onChange.bind(this)} 
-                />
-                <DisplayCooperResult 
-                  distance={this.state.distance}
-                  gender={this.state.gender}
-                  age={this.state.age}
-                  authenticated={this.state.authenticated}
-                  entrySaved={this.state.entrySaved}
-                  entryHandler={this.entryHandler.bind(this)}
-                />
-                {performanceDataIndex}
-                {renderLogin}
-            </Grid.Column>.Column>
-        </Grid>
-      </Container>
-=======
       <>
-        <InputFields
-        inputChangeHandler={this.onChange.bind(this)} 
-        />
-        
-        <DisplayCooperResult 
-          distance={this.state.distance}
-          gender={this.state.gender}
-          age={this.state.age}
-          authenticated={this.state.authenticated}
-          entrySaved={this.state.entrySaved}
-          entryHandler={this.entryHandler.bind(this)}
-        />
-        {performanceDataIndex}
-        <div>
-          {renderChart}
-        </div>
-        
-        <div>
-          {renderLogin}
-        </div>
-        
+        <Container>
+          <Grid centered columns={3}>
+          <Grid.Column>
+            <Header
+              as="h1"
+              textalign="center"
+              >
+                Cooper
+              </Header>
+                <InputFields
+                  inputChangeHandler={this.onChange.bind(this)} 
+                  />
+                  <DisplayCooperResult 
+                    distance={this.state.distance}
+                    gender={this.state.gender}
+                    age={this.state.age}
+                    authenticated={this.state.authenticated}
+                    entrySaved={this.state.entrySaved}
+                    entryHandler={this.entryHandler.bind(this)}
+                  />
+                  {performanceDataIndex}
+                  <div>
+                    {renderChart}
+                  </div>
+                  
+                  {renderLogin}
+              </Grid.Column>.Column>
+          </Grid>
+        </Container>
       </>
->>>>>>> 1637a4faa0d43f613f27cd5ba3be6d37a4ea839f
     );
   }
 }
