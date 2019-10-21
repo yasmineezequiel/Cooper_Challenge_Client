@@ -15,6 +15,8 @@ Answer of question 2:
 
 We're not sure what the alternative would be, but we see this as a clear example of restful architecture. When we save the data, we make a POST request, and when we retrieve it, we make a GET request. The benefits of setting the application up this way is that we SEND all the data necessary to make these requests happen, the server can simply just save it or hand it out. The server doesn't need to work as much as if it would have to look where to store this data or where to get it from for example, in this case the user. The server knows where to go instantly because of what we've sent it. This way the server can handle more requests at the same time.
 
+Screenshot of website on Screenshot file.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

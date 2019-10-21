@@ -74,6 +74,4 @@ class DisplayCooperChart extends Component {
   }      
 }
 
-  
-
 export default DisplayCooperChart;
